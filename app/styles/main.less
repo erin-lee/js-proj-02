@@ -1,43 +1,145 @@
 @import 'bootstrap/less/bootstrap';
-/* Space out content a bit */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
+
+@openSans: "Open Sans";
+@base: #cc5350;
+@primary: white;
+
+.transition (@prop: all, @time: 1s, @ease: linear) {
+    -webkit-transition: @prop @time @ease;
+    -moz-transition: @prop @time @ease;
+    -o-transition: @prop @time @ease;
+    -ms-transition: @prop @time @ease;
+    transition: @prop @time @ease;
+}
+
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  font-family: @openSans;
+  color: @primary;
+  background-color: @base;
+  border-top: 5px solid @primary;
+  text-align:center;
 }
-/* Custom page header */
-.header {
-    border-bottom: 1px solid #E5E5E5;
-    margin-bottom: 30px;
+
+* {
+  box-sizing: border-box;
 }
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
+
+h1 {
+  font-size: 25px;
 }
-/* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #E5E5E5;
+
+input[type=text] {
+  border: 3px solid lighten(gray, 40%);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  width: 200px;
+  text-align:center;
 }
-.container-narrow > hr {
-    margin: 30px 0;
+
+button {
+  background-color: lighten(@base, 10%);
+  border: 3px solid lighten(@base, 30%);
+  margin-top: 15px;
+  padding:15px 20px;
+  width: 200px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  .transition(all, 0.2s, ease-in-out);
+  &:hover {
+    background-color: lighten(spin(@base, 130), 10%);
+    border-color: spin(@base, 130);
+    cursor: pointer;
+  }
 }
-/* Main marketing message and sign up button */
-.jumbotron {
-    border-bottom: 0;
-    text-align: center;
+
+ul {
+  width: 250px;
+  margin: 25px auto;
 }
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+
+ul li {
+  list-style-type: none;
+  text-align: left;
+  margin: 15px 20px;
 }
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
+
+input[type=checkbox] {
+  display:none;
+  cursor:pointer;
+
+  &:focus,
+  &:active {
+    outline:none;
+  }
+
+  & + label:hover:after,
+  &:checked + label:after {
+    content: "x";
+    line-height: 18px;
+    font-size: 15px;
+  }
+
+  & + label:hover:after {
+    color: @base;
+  }
+
+  &:checked + label:after,
+  &:checked + label:hover:after {
+    color: white;
+  }
+
+  &:checked + label {
+    color: fade(white, 40%);
+  }
+
+  &:checked + label:before {
+    background-color: red;
+  }
+
+  & + label {
+    cursor: pointer;
+    display:inline-block;
+    position: relative;
+    padding-left: 28px;
+
+
+    &:before {
+      background-color: white;
+      .transition(all, 0.2s, ease-in-out);
+    }
+    &:after { color: white; }
+
+    &:before,
+    &:after {
+      content: "";
+      display:inline-block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      text-align: center;
+    }
+
+  }
 }
-.marketing p + h4 {
-    margin-top: 28px;
+
+label {
+  text-transform: capitalize;
+  .transition(all, 0.2s, ease-in-out);
+}
+
+a {
+  color: @primary;
+  text-decoration: none;
+}
+
+hr {
+  border:none;
+  border-top: 2px solid white;
+  width: 70%;
+  margin-bottom:25px;
 }
